@@ -1,0 +1,7 @@
+{
+  "name": "Nova - Windows AI Assistant",
+  "description": "A high-fidelity prototype of a Windows 11 native voice assistant using Gemini Live API for real-time system control and interaction.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
