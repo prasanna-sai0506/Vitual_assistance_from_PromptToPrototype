@@ -6,17 +6,15 @@ interface SettingsPanelProps {
   setSystemState: React.Dispatch<React.SetStateAction<SystemState>>;
   config: AssistantConfig;
   setConfig: React.Dispatch<React.SetStateAction<AssistantConfig>>;
-  apiKey: string;
-  setApiKey: (key: string) => void;
+  // Fix: Removed apiKey props
 }
 
 const SettingsPanel: React.FC<SettingsPanelProps> = ({
   systemState,
   setSystemState,
   config,
-  setConfig,
-  apiKey,
-  setApiKey
+  setConfig
+  // Fix: Removed apiKey props
 }) => {
   
   const toggleSystem = (key: keyof SystemState) => {
@@ -196,18 +194,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                </div>
             </div>
 
-            {/* API Key */}
-            <div>
-               <label className="block text-xs text-gray-400 mb-2">Gemini API Key</label>
-               <input 
-                  type="password" 
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="Enter your API Key"
-                  className="w-full bg-[#1c1c1c] border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 outline-none font-mono text-sm transition-colors"
-               />
-               <p className="text-xs text-gray-600 mt-2">Required for voice interaction features.</p>
-            </div>
+            {/* Fix: Removed API Key input section as per guidelines */}
           </div>
         </section>
       </div>

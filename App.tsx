@@ -37,7 +37,6 @@ export default function App() {
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [timers, setTimers] = useState<Timer[]>([]);
   const [recentFiles, setRecentFiles] = useState<MockFile[]>([]);
-  const [apiKey, setApiKey] = useState(process.env.API_KEY || '');
   const [activeTab, setActiveTab] = useState<'home' | 'settings'>('home');
   const [lastAction, setLastAction] = useState<string>('');
 
@@ -150,7 +149,9 @@ export default function App() {
 
   // Handle Connect
   const toggleAssistant = async () => {
-    if (!apiKey) return alert("API Key Missing");
+    // Fix: Use process.env.API_KEY directly as per guidelines. Do not use state.
+    const apiKey = process.env.API_KEY;
+    if (!apiKey) return alert("API Key Missing in Environment");
 
     if (appState === AppState.IDLE) {
       try {
@@ -324,8 +325,7 @@ export default function App() {
             setSystemState={setSystemState}
             config={config}
             setConfig={setConfig}
-            apiKey={apiKey}
-            setApiKey={setApiKey}
+            // Fix: Removed apiKey props
           />
         )}
       </div>
